@@ -56,5 +56,7 @@ class splunk::params (
   }
   $dontruncmds = false
   $pass4symmkey = 'changeme'
+  $certtype = 'custom'
+
 }
 

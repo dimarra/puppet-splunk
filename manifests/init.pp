@@ -37,6 +37,7 @@ class splunk (
   $dontruncmds  = $splunk::params::dontruncmds,
   $pass4symmkey  = $splunk::params::pass4symmkey,
   $phonehomeintervalinsec = $splunk::params::phonehomeintervalinsec
+  $certtype     = $splunk::params::certtype
   ) inherits splunk::params {
 
   if $type == 'uf' {

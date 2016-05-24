@@ -4,7 +4,11 @@ class splunk::certs::s2s (
   $package = $splunk::package,
   $splunk_os_user = $splunk::splunk_os_user,
   $splunk_home = $splunk::splunk_home
+  $certtype = $splunk::certtype
 ){
+
+if $certtype == 'custom' {
+
   file { "${splunk_home}/etc/auth/certs":
     ensure  => directory,
     owner   => $splunk_os_user,
@@ -50,6 +54,7 @@ class splunk::certs::s2s (
     path    => ['/bin', '/sbin', '/usr/bin', '/usr/sbin'],
     creates => [ "${splunk_home}/etc/auth/certs/s2s.pem", ],
   }
+} # else use default certs
 
 }
 
