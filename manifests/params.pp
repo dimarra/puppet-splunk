@@ -56,5 +56,9 @@ class splunk::params (
   }
   $dontruncmds = false
   $pass4symmkey = 'changeme'
+  $certtype = 'custom'
+  $splunk_app_precedence_dir  = 'default'
+  $splunk_app_replace  = true
+
 }
 
