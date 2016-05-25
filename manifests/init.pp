@@ -38,6 +38,8 @@ class splunk (
   $pass4symmkey  = $splunk::params::pass4symmkey,
   $phonehomeintervalinsec = $splunk::params::phonehomeintervalinsec
   $certtype     = $splunk::params::certtype
+  $splunk_app_precedence_dir  = $splunk::params::splunk_app_precedence_dir
+  $splunk_app_replace  = $splunk::params::splunk_app_replace
   ) inherits splunk::params {
 
   if $type == 'uf' {
@@ -72,9 +74,6 @@ class splunk (
     # instead of local, and don't replace any existing config 
     $splunk_app_precedence_dir = 'default'
     $splunk_app_replace = false
-  } else {
-    $splunk_app_precedence_dir = 'local'
-    $splunk_app_replace = true
   }
 
   include splunk::installed
