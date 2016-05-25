@@ -4,8 +4,8 @@ class splunk::server::shclustering (
   $splunk_home = $splunk::splunk_home,
   $splunk_os_user = $splunk::splunk_os_user,
   $shclustering = $splunk::shclustering,
-  $splunk_app_replace = $splunk::splunk_app_replace,
-  $splunk_app_precedence_dir = $splunk::splunk_app_precedence_dir
+  $splunk_app_replace = false,
+  $splunk_app_precedence_dir = 'default'
 ){
   $splunk_app_name = 'puppet_search_shcluster'
   if $shclustering[pass4symmkey] == undef {

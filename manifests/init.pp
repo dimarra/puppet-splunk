@@ -36,9 +36,9 @@ class splunk (
   $rolemap      = $splunk::params::rolemap,
   $dontruncmds  = $splunk::params::dontruncmds,
   $pass4symmkey  = $splunk::params::pass4symmkey,
-  $phonehomeintervalinsec = $splunk::params::phonehomeintervalinsec
-  $certtype     = $splunk::params::certtype
-  $splunk_app_precedence_dir  = $splunk::params::splunk_app_precedence_dir
+  $phonehomeintervalinsec = $splunk::params::phonehomeintervalinsec,
+  $certtype     = $splunk::params::certtype,
+  $splunk_app_precedence_dir  = $splunk::params::splunk_app_precedence_dir,
   $splunk_app_replace  = $splunk::params::splunk_app_replace
   ) inherits splunk::params {
 
@@ -66,14 +66,6 @@ class splunk (
       $sslversions   = undef
       $dhparamsize   = undef
       $ecdhcurvename = undef }
-  }
-
-  if $shclustering[mode] == 'searchhead' {
-    # for SHC nodes we only place bootstrap config, so make
-    # sure that staging directories end up using default dir
-    # instead of local, and don't replace any existing config 
-    $splunk_app_precedence_dir = 'default'
-    $splunk_app_replace = false
   }
 
   include splunk::installed
