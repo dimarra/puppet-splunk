@@ -1,11 +1,12 @@
 # vim: ts=2 sw=2 et
 class splunk::outputs (
-  $tcpout = $splunk::tcpout,
-  $splunk_os_user = $splunk::splunk_os_user,
-  $splunk_home    = $splunk::splunk_home,
+  $tcpout 		     = $splunk::tcpout,
+  $splunk_os_user 	     = $splunk::splunk_os_user,
+  $splunk_home    	     = $splunk::splunk_home,
   $splunk_app_precedence_dir = $splunk::splunk_app_precedence_dir,
-  $splunk_app_replace = $splunk::splunk_app_replace,
-  $useACK         = $splunk::useACK
+  $splunk_app_replace 	     = $splunk::splunk_app_replace,
+  $useACK                    = $splunk::useACK
+  $certtype                  = $splunk::certtype
 ){
   $splunk_app_name = 'puppet_common_ssl_outputs'
   if $tcpout == undef {
