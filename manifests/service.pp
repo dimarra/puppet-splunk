@@ -9,11 +9,13 @@ class splunk::service (
   if $service[ensure] == undef {
     service { 'splunk':
       enable  => $service[enable],
+      provider => 'redhat'
     }
   } else {
     service { 'splunk':
       ensure => $service[ensure],
       enable => $service[enable],
+      provider => 'redhat',
     }
   }
 }
