@@ -64,7 +64,7 @@ class splunk (
     default: {
       $ciphersuite   = undef
       $sslversions   = undef
-      $dhparamsize   = undef
+      $dhparamsize   = $dhparamsize_default
       $ecdhcurvename = undef }
   }
 
