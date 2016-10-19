@@ -30,7 +30,7 @@ class splunk (
   $shclustering = $splunk::params::shclustering,
   $service      = $splunk::params::service,
   $useACK       = $splunk::params::useACK,
-  $ds_intermediate = $splunk::params::ds_intemediate,
+  $ds_intermediate = $splunk::params::ds_intermediate,
   $version      = $splunk::params::version,
   $auth         = $splunk::params::auth,
   $rolemap      = $splunk::params::rolemap,
@@ -38,6 +38,7 @@ class splunk (
   $pass4symmkey  = $splunk::params::pass4symmkey,
   $phonehomeintervalinsec = $splunk::params::phonehomeintervalinsec,
   $certtype     = $splunk::params::certtype,
+  $replication_port = $splunk::params::replication_port,
   $splunk_app_precedence_dir  = $splunk::params::splunk_app_precedence_dir,
   $splunk_app_replace  = $splunk::params::splunk_app_replace
   ) inherits splunk::params {
