@@ -2,7 +2,8 @@
 class splunk::splunk_launch (
   $splunk_os_user = $splunk::splunk_os_user,
   $splunk_bindip = $splunk::splunk_bindip,
-  $splunk_home = $splunk::splunk_home
+  $splunk_home = $splunk::splunk_home,
+  $splunk_db_dir = $splunk::splunk_db_dir,
 ){
   if $splunk_os_user == undef {
     augeas { "${splunk_home}/etc/splunk-launch.conf splunk_os_user":
@@ -38,4 +39,22 @@ class splunk::splunk_launch (
       ];
     }
   }
+  if $splunk_db_dir == undef {
+    augeas { "${splunk_home}/etc/splunk-launch.conf splunk_db_dir":
+      lens    => 'ShellVars.lns',
+      incl    => "${splunk_home}/etc/splunk-launch.conf",
+      changes => [
+        'rm SPLUNK_DB',
+      ];
+    }
+  } else {
+    augeas { "${splunk_home}/etc/splunk-launch.conf splunk_db_dir":
+      lens    => 'ShellVars.lns',
+      incl    => "${splunk_home}/etc/splunk-launch.conf",
+      changes => [
+        "set SPLUNK_DB ${splunk_db_dir}",
+      ];
+    }
+  }
+  
 }

@@ -4,6 +4,7 @@ class splunk::params (
   $type        = undef
   $splunk_os_user = 'splunk'
   $splunk_bindip  = undef
+  $splunk_db_dir = undef
   $lm          = undef
   $ds          = undef
   $inputport   = undef
