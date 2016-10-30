@@ -124,7 +124,7 @@ node 'splunk-server.internal.corp.tld' {
 node 'some-server.internal.corp.tld' {
   class { 'splunk':
     type => 'uf',
-    ds   => 'splunk-server.internal.corp.tld:8089',
+    deployment_server => 'splunk-server.internal.corp.tld:8089',
   }
 }
 ```
@@ -176,8 +176,8 @@ node 'splunk-sh.internal.corp.tld' {
     httpport     => 8000,
     kvstoreport  => 8191,
     # Use a License Master and Deployment Server
-    lm           => 'splunk-ds.internal.corp.tld:8089',
-    ds           => 'splunk-ds.internal.corp.tld:8089',
+    license_master    => 'splunk-ds.internal.corp.tld:8089',
+    deployment_server => 'splunk-ds.internal.corp.tld:8089',
     tcpout       => [ 
       'splunk-idx1.internal.corp.tld:9997', 
       'splunk-idx2.internal.corp.tld:9997', ],
@@ -202,8 +202,8 @@ node 'splunk-idx1.internal.corp.tld', 'splunk-idx2.internal.corp.tld' {
       email      => 'changemeagain@example.com',
     },
     inputport    => 9997,
-    lm           => 'splunk-ds.internal.corp.tld:8089',
-    ds           => 'splunk-ds.internal.corp.tld:8089',
+    license_master    => 'splunk-ds.internal.corp.tld:8089',
+    deployment_server => 'splunk-ds.internal.corp.tld:8089',
     # splunk must be running for it to be added as search peer,
     # you can remove this if everything is up and running
     service      => {
@@ -233,7 +233,7 @@ node 'splunk-sh.internal.corp.tld' {
     tcpout       => [ 'splunk-idx1.internal.corp.tld:9997', 'splunk-idx2.internal.corp.tld:9997', ],
     clustering   => {
       mode       => 'searchhead',
-      cm         => 'splunk-cm.internal.corp.tld:8089',
+      master     => 'splunk-cm.internal.corp.tld:8089',
     }
   }
 }
@@ -268,7 +268,7 @@ node 'splunk-idx1.internal.corp.tld',
     inputport    => 8000,
     clustering   => {
       mode       => 'slave',
-      cm         => 'splunk-cm.internal.corp.tld:8089',
+      master     => 'splunk-cm.internal.corp.tld:8089',
     }
   }
 }
@@ -381,7 +381,7 @@ node 'splunk-sh1.internal.corp.tld',
     ...
     shclustering   => {
       mode         => 'searchhead',
-      shd          => 'splunk-shd.internal.corp.tld:8089',
+      deployer     => 'splunk-shd.internal.corp.tld:8089',
       pass4symmkey => 'SHCl33tsecret',
       label        => 'My First SHC',
     },
@@ -452,11 +452,11 @@ Steps:
   Optional. Used if you're running Splunk outside of /opt/splunk or
   /opt/splunkforwarder.
 
-#### `lm`
+#### `license_master`
 
   Optional. Used to point to a Splunk license manager.
 
-#### `ds`
+#### `deployment_server`
 
   Optional. Used to point to a Splunk deployment server
 
@@ -513,7 +513,7 @@ Steps:
   - `mode` (can be one of `master`,`searchhead`,`slave`)
   - `replication_factor`
   - `search_factor`
-  - `cm` (points to cluster master in case of searchhead or slave)
+  - `master` (points to cluster master in case of searchhead or slave)
 
 #### `shclustering`
 
@@ -521,7 +521,7 @@ Steps:
 
   - `mode` (can be one of `searchhead`,`deployer`)
   - `replication_factor`
-  - `shd` (points to search head deployer, but see caveat in Example 7)
+  - `deployer` (points to search head deployer, but see caveat in Example 7)
 
 #### `useACK`
 
