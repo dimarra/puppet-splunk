@@ -1,7 +1,7 @@
 # vim: ts=2 sw=2 et
 class splunk::deploymentclient
 (
-  $ds = $splunk::ds,
+  $deployment_server = $splunk::deployment_server,
   $ds_intermediate = $splunk::ds_intermediate,
   $repositorylocation = $splunk::repositorylocation,
   $splunk_home = $splunk::splunk_home,
@@ -11,7 +11,7 @@ class splunk::deploymentclient
   $phonehomeintervalinsec = $splunk::phonehomeintervalinsec
 ){
   $splunk_app_name = 'puppet_common_deploymentclient_base'
-  if $ds == undef {
+  if $deployment_server == undef {
     file {"${splunk_home}/etc/apps/${splunk_app_name}":
       ensure  => absent,
       recurse => true,
