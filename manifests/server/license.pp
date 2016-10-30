@@ -1,13 +1,13 @@
 # vim: ts=2 sw=2 et
 class splunk::server::license (
-  $lm = $splunk::lm,
+  $license_master = $splunk::license_master,
   $splunk_os_user = $splunk::splunk_os_user,
   $splunk_app_precedence_dir = $splunk::splunk_app_precedence_dir,
   $splunk_app_replace = $splunk::splunk_app_replace,
   $splunk_home = $splunk::splunk_home
 ){
   $splunk_app_name = 'puppet_common_license_client_base'
-  if $lm == undef {
+  if $license_master == undef {
     file {"${splunk_home}/etc/apps/${splunk_app_name}":
       ensure  => absent,
       recurse => true,
