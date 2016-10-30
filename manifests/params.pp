@@ -5,8 +5,8 @@ class splunk::params (
   $splunk_os_user = 'splunk'
   $splunk_bindip  = undef
   $splunk_db_dir = undef
-  $lm          = undef
-  $ds          = undef
+  $license_master = undef
+  $deployment_server = undef
   $inputport   = undef
   $outputs     = undef
   $webssl      = true
