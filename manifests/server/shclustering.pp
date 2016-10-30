@@ -18,7 +18,7 @@ class splunk::server::shclustering (
       # remove previous shclustering config apps if shclustering is not set
       # create both base config and secret key for shclustering if searchhead deployer is set
       $replication_factor = $shclustering[replication_factor]
-      $shd = $shclustering[shd]
+      $shdeployer = $shclustering[deployer]
       $label = $shclustering[label]
       file { [
         "${splunk_home}/etc/apps/${splunk_app_name}_base",
