@@ -20,12 +20,8 @@
 
 class splunk::profile::indexer {
 
-  include splunk
-
-#  class { 'splunk' :
-#    clustering => { 
-#      master   => undef,
-#    }
-#  }
+  class { 'splunk' :
+    tcpout       => undef,
+  }
 
 }
