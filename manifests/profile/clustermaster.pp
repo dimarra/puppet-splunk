@@ -20,7 +20,7 @@
 
 class splunk::profile::clustermaster {
 
-  $clustering_first = lookup("splunk::clustering", Hash, "first", "default value")
+  $clustering_first = lookup("splunk::clustering",  Hash[String, Scalar], "first", "default value")
   notify { $clustering_first: }
 
   $clustering_deep = lookup("splunk::clustering", Hash, "deep", "default value")
