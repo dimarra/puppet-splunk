@@ -20,20 +20,7 @@
 
 class splunk::profile::clustermaster {
 
-  $clustering_first = lookup("splunk::clustering",  Hash[String, Scalar], "first", "default value")
-  notify { "first $clustering_first": }
-
-  $clustering_deep = lookup("splunk::clustering", Hash[String, Scalar], "deep", "default value")
-  notify { "deep $clustering_deep": }
-
-#  $clustering_unique = lookup("splunk::clustering", Hash[String, Scalar], "unique", "default value")
-#  notify { "unique $clustering_unique": }
-
-  $clustering_hash = lookup("splunk::clustering", Hash[String, Scalar], "hash", undef)
-  notify { "hash $clustering_hash": }
-
-
-#  include splunk
+  # do a lookup hash strategy to merge the values from other yaml files.
   class { 'splunk' :
     clustering => lookup("splunk::clustering", Hash[String, Scalar], "hash", undef)
   }
