@@ -20,10 +20,11 @@
 
 class splunk::profile::clustermaster {
 
-  class { 'splunk' :
+  include splunk
+#  class { 'splunk' :
 #    clustering => { 
 #      master   => undef,
 #    }
-  }
+#  }
 
 }
