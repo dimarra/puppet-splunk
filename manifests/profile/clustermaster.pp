@@ -29,15 +29,12 @@ class splunk::profile::clustermaster {
 #  $clustering_unique = lookup("splunk::clustering", Hash[String, Scalar], "unique", "default value")
 #  notify { "unique $clustering_unique": }
 
-  $clustering_hash = lookup("splunk::clustering", Hash[String, Scalar], "hash", "default value")
+  $clustering_hash = lookup("splunk::clustering", Hash[String, Scalar], "hash", undef)
   notify { "hash $clustering_hash": }
 
 
   include splunk
-#  class { 'splunk' :
-#    clustering => { 
-#      master   => undef,
-#    }
-#  }
-
+  class { 'splunk' :
+    clustering => lookup("splunk::clustering", Hash[String, Scalar], "hash", undef)
+  }
 }
