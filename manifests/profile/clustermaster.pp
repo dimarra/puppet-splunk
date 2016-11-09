@@ -33,7 +33,7 @@ class splunk::profile::clustermaster {
   notify { "hash $clustering_hash": }
 
 
-  include splunk
+#  include splunk
   class { 'splunk' :
     clustering => lookup("splunk::clustering", Hash[String, Scalar], "hash", undef)
   }
