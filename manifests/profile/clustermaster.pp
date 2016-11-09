@@ -20,16 +20,16 @@
 
 class splunk::profile::clustermaster {
 
-  $clustering_first = lookup("splunk::clustering", String, "first", "default value")
+  $clustering_first = lookup("splunk::clustering", Hash, "first", "default value")
   notify { $clustering_first: }
 
-  $clustering_deep = lookup("splunk::clustering", String, "deep", "default value")
+  $clustering_deep = lookup("splunk::clustering", Hash, "deep", "default value")
   notify { $clustering_deep: }
 
-  $clustering_unique = lookup("splunk::clustering", String, "unique", "default value")
+  $clustering_unique = lookup("splunk::clustering", Hash, "unique", "default value")
   notify { $clustering_unique: }
 
-  $clustering_hash = lookup("splunk::clustering", String, "hash", "default value")
+  $clustering_hash = lookup("splunk::clustering", Hash, "hash", "default value")
   notify { $clustering_hash: }
 
 
