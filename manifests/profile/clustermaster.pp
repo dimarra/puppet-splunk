@@ -21,9 +21,9 @@
 class splunk::profile::clustermaster {
 
   class { 'splunk' :
-    clustering => { 
-      master   => undef,
-    }
+#    clustering => { 
+#      master   => undef,
+#    }
   }
 
 }
