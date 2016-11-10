@@ -20,6 +20,7 @@ class splunk::server::clustering (
     'master': {
       $replication_factor = $clustering[replication_factor]
       $search_factor = $clustering[search_factor]
+      $cluster_label = $clustering[cluster_label]
       file { [
         "${splunk_home}/etc/apps/${splunk_app_name}_slave_base",
         "${splunk_home}/etc/apps/${splunk_app_name}_searchhead_base", ]:
