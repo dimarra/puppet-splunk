@@ -28,7 +28,7 @@ class splunk::profile::licensemaster {
 
   # license master should not be pointing to another master.  pls confirm?
   class { 'splunk' :
-    license_master => $license_master,
+    license_master => 'donotapply',
   }
 
 }
