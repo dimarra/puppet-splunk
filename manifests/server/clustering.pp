@@ -57,7 +57,7 @@ class splunk::server::clustering (
 
     }
     'slave': {
-      $cm = $clustering[cm]
+      $master = $clustering[master]
       file { [
         "${splunk_home}/etc/apps/${splunk_app_name}_master_base",
         "${splunk_home}/etc/apps/${splunk_app_name}_searchhead_base", ]:
@@ -95,7 +95,7 @@ class splunk::server::clustering (
 
     }
     'searchhead': {
-      $cm = $clustering[cm]
+      $master = $clustering[master]
       file { [
         "${splunk_home}/etc/apps/${splunk_app_name}_master_base",
         "${splunk_home}/etc/apps/${splunk_app_name}_slave_base", ]:
