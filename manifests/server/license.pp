@@ -7,7 +7,6 @@ class splunk::server::license (
   $splunk_home = $splunk::splunk_home
 ){
   $splunk_app_name = 'puppet_common_license_client_base'
-  notify { "inside $license_master": }
   if $license_master == 'donotapply' {
     file {"${splunk_home}/etc/apps/${splunk_app_name}":
       ensure  => absent,

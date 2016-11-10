@@ -20,12 +20,6 @@
 
 class splunk::profile::licensemaster {
 
-#  $license_master = lookup("splunk::license_master", String, "first", undef)
-#  notify { "first $license_master": }
-  
-  $license_master = undef
-  notify { "replaced $license_master": }
-
   # license master should not be pointing to another master.  pls confirm?
   class { 'splunk' :
     license_master => 'donotapply',
