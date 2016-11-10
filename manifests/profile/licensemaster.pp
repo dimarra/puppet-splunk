@@ -20,12 +20,9 @@
 
 class splunk::profile::licensemaster {
 
-  include splunk
-
-#  class { 'splunk' :
-#    clustering => { 
-#      master   => undef,
-#    }
-#  }
+  # license master should not be pointing to another master.  pls confirm?
+  class { 'splunk' :
+    license_master => undef,
+  }
 
 }

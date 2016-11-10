@@ -21,6 +21,7 @@
 class splunk::profile::indexer {
 
   class { 'splunk' :
+    clustering => lookup("splunk::clustering", Hash[String, Scalar], "hash", undef),
     tcpout       => undef,
   }
 
