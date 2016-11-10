@@ -20,9 +20,24 @@
 
 class splunk::profile::indexer {
 
+ $clustering_first = lookup("splunk::clustering",  Hash[String, Scalar], "first", "default value")
+  notify { "first $clustering_first": }
+
+
+  $clustering_deep = lookup("splunk::clustering", Hash[String, Scalar], "deep", "default value")
+  notify { "deep $clustering_deep": }
+
+
+#  $clustering_unique = lookup("splunk::clustering", Hash[String, Scalar], "unique", "default value")
+#  notify { "unique $clustering_unique": }
+
+
+  $clustering_hash = lookup("splunk::clustering", Hash[String, Scalar], "hash", "default value")
+  notify { "hash $clustering_hash": }
+
   class { 'splunk' :
     clustering => lookup("splunk::clustering", Hash[String, Scalar], "hash", undef),
-    tcpout       => undef,
+    tcpout     => 'donotapply',
   }
 
 }
