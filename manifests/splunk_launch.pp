@@ -5,6 +5,7 @@ class splunk::splunk_launch (
   $splunk_home = $splunk::splunk_home,
   $splunk_db_dir = $splunk::splunk_db_dir,
 ){
+  if $::osfamily != 'windows' {
   if $splunk_os_user == undef {
     augeas { "${splunk_home}/etc/splunk-launch.conf splunk_os_user":
       lens    => 'ShellVars.lns',
@@ -56,5 +57,5 @@ class splunk::splunk_launch (
       ];
     }
   }
-  
+  }
 }
