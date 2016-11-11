@@ -7,7 +7,7 @@
 
 class splunk (
   $type         = $splunk::params::type,
-  $splunk_home   = $splunk::params::splunk_home,
+#  $splunk_home   = $splunk::params::splunk_home,
   $splunk_os_user   = $splunk::params::splunk_os_user,
   $splunk_bindip    = $splunk::params::splunk_bindip,
   $splunk_db_dir    = $splunk::params::splunk_db_dir,
