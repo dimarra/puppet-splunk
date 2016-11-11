@@ -20,6 +20,8 @@
 
 class splunk::profile::universalforwarder {
 
+  notify { "first universalforwarder ": }
+
   class { 'splunk' :
     type => 'uf',
   }
