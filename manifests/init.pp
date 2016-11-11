@@ -56,11 +56,13 @@ class splunk (
     'windows': {
       if $type == 'uf' {
         $package = 'splunkforwarder'
-        $splunk_home = 'C:\\Program Files\\SplunkUniversalForwarder'
+#        $splunk_home = 'C:\\Program Files\\SplunkUniversalForwarder'
+        $splunk_home = 'C:/Program Files/SplunkUniversalForwarder'
         notify { "second $package $splunk_home": }
       } else {
         $package = 'splunk'        
-        $splunk_home = 'C:\\Program Files\\Splunk'
+#        $splunk_home = 'C:\\Program Files\\Splunk'
+        $splunk_home = 'C:/Program Files/Splunk'
         notify { "third $package $splunk_home": }
       }
      }
