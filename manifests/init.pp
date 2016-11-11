@@ -7,6 +7,7 @@
 
 class splunk (
   $type         = $splunk::params::type,
+  $splunk_home   = $splunk::params::splunk_home,
   $splunk_os_user   = $splunk::params::splunk_os_user,
   $splunk_bindip    = $splunk::params::splunk_bindip,
   $splunk_db_dir    = $splunk::params::splunk_db_dir,
@@ -44,13 +45,13 @@ class splunk (
   $splunk_app_replace  = $splunk::params::splunk_app_replace
   ) inherits splunk::params {
 
-  if $type == 'uf' {
-    $splunk_home = '/opt/splunkforwarder'
-    $package = 'splunkforwarder'
-  } else {
-    $splunk_home = '/opt/splunk'
-    $package = 'splunk'
-  }
+#  if $type == 'uf' {
+#    $splunk_home = '/opt/splunkforwarder'
+#    $package = 'splunkforwarder'
+#  } else {
+#    $splunk_home = '/opt/splunk'
+#    $package = 'splunk'
+#  }
 
   case $sslcompatibility {
     'modern':            {

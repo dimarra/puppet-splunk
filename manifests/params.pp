@@ -67,5 +67,26 @@ class splunk::params (
   $splunk_app_precedence_dir  = 'default'
   $splunk_app_replace  = true
 
+  case $::osfamily {
+    'windows': {
+      if $type == 'uf' {
+        $package = 'splunkforwarder'
+        $splunk_home = 'C:\\Program Files\\SplunkUniversalForwarder'
+      } else {
+        $package = 'splunk'        
+        $splunk_home = 'C:\\Program Files\\Splunk'
+      }
+     }
+    default: {
+      if $type == 'uf' {
+        $splunk_home = '/opt/splunkforwarder'
+        $package = 'splunkforwarder'
+      } else {
+        $splunk_home = '/opt/splunk'
+        $package = 'splunk'
+     }
+
+    }  
+  }
 }
 
