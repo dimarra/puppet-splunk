@@ -7,7 +7,7 @@ class splunk::certs::s2s (
   $certtype = $splunk::certtype
 ){
 
-if $certtype == 'custom' {
+if $certtype == 'custom' and $::osfamily != 'windows' {
 
   file { "${splunk_home}/etc/auth/certs":
     ensure  => directory,
