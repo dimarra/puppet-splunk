@@ -68,6 +68,27 @@ class splunk::params (
   $splunk_app_replace  = true
   $splunk_home  = undef
 
+  case $::osfamily {
+    'windows': {
+        $server_home = 'C:/Apps/Splunk'
+        $server_package = 'splunk'
+        
+        $uf_home = 'C:/Apps/SplunkUniversalForwarder'
+        $uf_package = 'splunkforwarder'
 
+        $default_user = 'Administrator'
+        $default_group = 'Administrators'
+    }
+    default: {
+        $server_home = '/opt/splunk'
+        $server_package = 'splunk'
+        
+        $uf_home = '/opt/splunkforwarder'
+        $uf_package = 'splunkforwarder'
+
+        $default_user = 'Administrator'
+        $default_group = 'Administrators'
+    }
+  }  
 }
 

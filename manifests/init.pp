@@ -45,41 +45,15 @@ class splunk (
   $splunk_app_replace  = $splunk::params::splunk_app_replace
   ) inherits splunk::params {
 
-#  if $type == 'uf' {
-#    $splunk_home = '/opt/splunkforwarder'
-#    $package = 'splunkforwarder'
-#  } else {
-#    $splunk_home = '/opt/splunk'
-#    $package = 'splunk'
-#  }
-  case $::osfamily {
-    'windows': {
-      if $type == 'uf' {
-        $package = 'splunkforwarder'
-#        $splunk_home = 'C:\\Program Files\\SplunkUniversalForwarder'
-        $splunk_home = 'C:/Program Files/SplunkUniversalForwarder'
-        notify { "second $package $splunk_home": }
-      } else {
-        $package = 'splunk'        
-#        $splunk_home = 'C:\\Program Files\\Splunk'
-        $splunk_home = 'C:/Program Files/Splunk'
-        notify { "third $package $splunk_home": }
-      }
-     }
-    default: {
-      if $type == 'uf' {
-        $splunk_home = '/opt/splunkforwarder'
-        $package = 'splunkforwarder'
-        notify { "fourth $package $splunk_home": }
-      } else {
-        $splunk_home = '/opt/splunk'
-        $package = 'splunk'
-        notify { "fifth $package $splunk_home": }
-     }
-
-    }  
+  if $type == 'uf' {
+    $splunk_home = $splunk::params::uf_home
+    $package = $splunk::params::uf_package
+  } else {
+    $splunk_home = $splunk::params::server_home
+    $package = $splunk::params::server_package
   }
-  case $sslcompatibility {
+
+   case $sslcompatibility {
     'modern':            {
       $ciphersuite   = $ciphersuite_modern
       $sslversions   = $sslversions_modern
