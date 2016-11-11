@@ -7,7 +7,8 @@ class splunk::certs::s2s (
   $certtype = $splunk::certtype
 ){
 
-if $certtype == 'custom' and $::osfamily != 'windows' {
+#if $certtype == 'custom' and $::osfamily != 'windows' {
+if $certtype == 'custom' {
 
   file { "${splunk_home}/etc/auth/certs":
     ensure  => directory,
@@ -18,7 +19,7 @@ if $certtype == 'custom' and $::osfamily != 'windows' {
   } ->
   exec { 'openssl dhparam':
     command   => "openssl dhparam -outform PEM -out ${splunk_home}/etc/auth/certs/dhparam.pem ${dhparamsize}",
-    path      => ['/bin', '/sbin', '/usr/bin', '/usr/sbin'],
+    path      => ['/bin', '/sbin', '/usr/bin', '/usr/sbin', "${splunk_home}/bin"],
     creates   => [
       "${splunk_home}/etc/auth/certs/dhparam.pem",
     ],
@@ -45,14 +46,14 @@ if $certtype == 'custom' and $::osfamily != 'windows' {
   # reuse certs from commercial Puppet
   exec { 'openssl s2s ca commercial puppet':
     command => "cat /etc/puppetlabs/puppet/ssl/certs/ca.pem > ${splunk_home}/etc/auth/certs/ca.crt",
-    path    => ['/bin', '/sbin', '/usr/bin', '/usr/sbin'],
+    path    => ['/bin', '/sbin', '/usr/bin', '/usr/sbin', "${splunk_home}/bin"],
     creates => [ "${splunk_home}/etc/auth/certs/ca.crt", ],
     require => File["${splunk_home}/etc/auth/certs"],
     onlyif  => '/usr/bin/test -e /etc/puppetlabs/puppet/ssl'
   } ->
   exec { 'openssl s2s 1 commercial puppet':
     command => "cat /etc/puppetlabs/puppet/ssl/private_keys/${::fqdn}.pem /etc/puppetlabs/puppet/ssl/certs/${::fqdn}.pem > ${splunk_home}/etc/auth/certs/s2s.pem",
-    path    => ['/bin', '/sbin', '/usr/bin', '/usr/sbin'],
+    path    => ['/bin', '/sbin', '/usr/bin', '/usr/sbin',],
     creates => [ "${splunk_home}/etc/auth/certs/s2s.pem", ],
     onlyif  => '/usr/bin/test -e /etc/puppetlabs/puppet/ssl'
   }
