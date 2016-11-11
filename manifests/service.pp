@@ -7,15 +7,15 @@ class splunk::service (
   notice("enable => ${service}[enable]")
   notice("ensure => ${service}[ensure]")
   if $service[ensure] == undef {
-    service { 'splunk':
+    service { $package :
       enable  => $service[enable],
-      provider => 'redhat'
+#      provider => 'redhat'
     }
   } else {
-    service { 'splunk':
+    service { $package :
       ensure => $service[ensure],
       enable => $service[enable],
-      provider => 'redhat',
+#      provider => 'redhat',
     }
   }
 }
