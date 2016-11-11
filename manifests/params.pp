@@ -70,10 +70,10 @@ class splunk::params (
 
   case $::osfamily {
     'windows': {
-        $server_home = 'C:/Apps/Splunk'
+        $server_home = 'C:/Program Files/Splunk'
         $server_package = 'splunk'
         
-        $uf_home = 'C:/Apps/SplunkUniversalForwarder'
+        $uf_home = 'C:/Program Files/SplunkUniversalForwarder'
         $uf_package = 'splunkforwarder'
 
         $default_user = 'Administrator'
