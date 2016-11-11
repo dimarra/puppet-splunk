@@ -2,7 +2,7 @@
 class splunk::params (
 ) {
   $type        = undef
-  $splunk_os_user = 'splunk'
+#  $splunk_os_user = 'splunk'
   $splunk_bindip  = undef
   $splunk_db_dir = undef
   $license_master = undef
@@ -76,8 +76,8 @@ class splunk::params (
         $uf_home = 'C:/Program Files/SplunkUniversalForwarder'
         $uf_package = 'splunkforwarder'
 
-        $default_user = 'Administrator'
-        $default_group = 'Administrators'
+#        $default_user = 'Administrator'
+        $splunk_os_user = 'Administrators'
     }
     default: {
         $server_home = '/opt/splunk'
@@ -86,8 +86,8 @@ class splunk::params (
         $uf_home = '/opt/splunkforwarder'
         $uf_package = 'splunkforwarder'
 
-        $default_user = 'Administrator'
-        $default_group = 'Administrators'
+#        $default_user = 'Administrator'
+        $splunk_os_user = 'Administrators'
     }
   }  
 }
