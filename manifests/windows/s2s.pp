@@ -1,17 +1,12 @@
 # vim: ts=2 sw=2 et
-class splunk::certs::s2s (
+class splunk::windows::s2s (
   $dhparamsize = $splunk::dhparamsize,
   $package = $splunk::package,
   $splunk_os_user = $splunk::splunk_os_user,
   $splunk_home = $splunk::splunk_home,
   $certtype = $splunk::certtype
 ){
-          # the following section is added for handling on windows platform
-          if $::osfamily == 'windows' {
-#            include splunk::windows::s2s
-#            Class['splunk::windows::s2s']
-          } else {
-          # proceed as per original module
+  # TODO: revise all file permissions and commands paths
   if $certtype == 'custom' {
 
   file { "${splunk_home}/etc/auth/certs":
@@ -64,6 +59,5 @@ class splunk::certs::s2s (
   
   } # if $certtype
 
-          } # end if $::osfamily == 'windows'
 }
 

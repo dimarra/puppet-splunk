@@ -1,15 +1,10 @@
 # vim: ts=2 sw=2 et
-class splunk::passwd (
+class splunk::windows::passwd (
   $admin = $splunk::admin,
   $splunk_home = $splunk::splunk_home,
   $splunk_os_user = $splunk::splunk_os_user
 ){
-          # the following section is added for handling on windows platform
-          if $::osfamily == 'windows' {
-#            include splunk::windows::passwd
-#            Class['splunk::windows::passwd']
-          } else {
-          # proceed as per original module
+  # TODO: revise all file momde and exec to suit windows
   if $admin != undef {
     $hash  = $admin[hash]
     $fn    = $admin[fn]
@@ -34,6 +29,5 @@ class splunk::passwd (
       replace => 'no',
     }
   }
-          } # end if $::osfamily == 'windows'
 }
 

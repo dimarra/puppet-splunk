@@ -1,16 +1,11 @@
 # vim: ts=2 sw=2 et
-class splunk::splunk_launch (
+class splunk::widows::splunk_launch (
   $splunk_os_user = $splunk::splunk_os_user,
   $splunk_bindip = $splunk::splunk_bindip,
   $splunk_home = $splunk::splunk_home,
   $splunk_db_dir = $splunk::splunk_db_dir,
 ){
-          # the following section isadded for handling on windows platform
-          if $::osfamily == 'windows' {
-#            include splunk::windows::splunk_launch
-#            Class['splunk::windows::splunk_launch']
-          } else {
-          # proceed as per original module
+  # TODO: revise all augeas to ini_file resources
   if $splunk_os_user == undef {
     augeas { "${splunk_home}/etc/splunk-launch.conf splunk_os_user":
       lens    => 'ShellVars.lns',
@@ -62,5 +57,4 @@ class splunk::splunk_launch (
       ];
     }
   }
-          } # end if $::osfamily == 'windows'
 }
