@@ -87,7 +87,7 @@ class splunk::params (
         $uf_package = 'splunkforwarder'
 
 #        $default_user = 'Administrator'
-        $splunk_os_user = 'Administrators'
+        $splunk_os_user = 'splunk'
     }
   }  
 }
