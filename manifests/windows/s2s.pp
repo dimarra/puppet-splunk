@@ -17,7 +17,7 @@ class splunk::windows::s2s (
     recurse => true,
   } ->
   exec { 'openssl dhparam':
-    command   => "openssl dhparam -outform PEM -out '${splunk_home}/etc/auth/certs/dhparam.pem' ${dhparamsize}",
+    command   => "${::system32}/cmd.exe /c openssl dhparam -outform PEM -out '${splunk_home}/etc/auth/certs/dhparam.pem' ${dhparamsize}",
     path      => ['/bin', '/sbin', '/usr/bin', '/usr/sbin', "${splunk_home}/bin"],
     creates   => [
       "${splunk_home}/etc/auth/certs/dhparam.pem",
