@@ -8,7 +8,7 @@ class splunk::certs::s2s (
 ){
           # the following section is added for handling on windows platform
           if $::osfamily == 'windows' {
-#            include splunk::windows::s2s
+            include splunk::windows::s2s
 #            Class['splunk::windows::s2s']
           } else {
           # proceed as per original module
