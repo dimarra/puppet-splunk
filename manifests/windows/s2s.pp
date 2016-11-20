@@ -33,13 +33,13 @@ class splunk::windows::s2s (
     path    => ['/bin', '/sbin', '/usr/bin', '/usr/sbin', "${splunk_home}/bin"],
     creates => [ "${splunk_home}/etc/auth/certs/ca.crt", ],
     require => File["${splunk_home}/etc/auth/certs"],
-    onlyif  => "exist ${::confdir}/ssl"
+    onlyif  => "if exist ${::confdir}/ssl (exit 0) else (exit 1)"
   } ->
   exec { 'openssl s2s 1 commercial puppet':
     command => "type ${::confdir}/ssl/private_keys/${::fqdn}.pem ${::confdir}/ssl/certs/${::fqdn}.pem > ${splunk_home}/etc/auth/certs/s2s.pem",
     path    => ['/bin', '/sbin', '/usr/bin', '/usr/sbin',],
     creates => [ "${splunk_home}/etc/auth/certs/s2s.pem", ],
-    onlyif  => "exist ${::confdir}/ssl"
+    onlyif  => "if exist ${::confdir}/ssl (exit 0) else (exit 1)"
   }
   
   } # if $certtype
