@@ -58,7 +58,7 @@ class splunk::server::clustering (
 
     }
     'slave': {
-      $master = $clustering[master]
+      $master_uri = $clustering[master_uri]
       file { [
         "${splunk_home}/etc/apps/${splunk_app_name}_master_base",
         "${splunk_home}/etc/apps/${splunk_app_name}_searchhead_base", ]:
