@@ -23,7 +23,7 @@ class splunk::certs::s2s (
   } ->
   exec { 'openssl dhparam':
     command   => "openssl dhparam -outform PEM -out ${splunk_home}/etc/auth/certs/dhparam.pem ${dhparamsize}",
-    path      => ['/bin', '/sbin', '/usr/bin', '/usr/sbin', "${splunk_home}/bin"],
+    path      => ['/bin', '/sbin', '/usr/bin', '/usr/sbin', ],
     creates   => [
       "${splunk_home}/etc/auth/certs/dhparam.pem",
     ],
@@ -50,7 +50,7 @@ class splunk::certs::s2s (
   # reuse certs from commercial Puppet
   exec { 'openssl s2s ca commercial puppet':
     command => "cat /etc/puppetlabs/puppet/ssl/certs/ca.pem > ${splunk_home}/etc/auth/certs/ca.crt",
-    path    => ['/bin', '/sbin', '/usr/bin', '/usr/sbin', "${splunk_home}/bin"],
+    path    => ['/bin', '/sbin', '/usr/bin', '/usr/sbin', ],
     creates => [ "${splunk_home}/etc/auth/certs/ca.crt", ],
     require => File["${splunk_home}/etc/auth/certs"],
     onlyif  => '/usr/bin/test -e /etc/puppetlabs/puppet/ssl'
