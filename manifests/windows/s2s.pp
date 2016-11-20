@@ -17,7 +17,7 @@ class splunk::windows::s2s (
     recurse => true,
   } ->
   exec { 'openssl dhparam':
-    command   => "cmd.exe /c \"openssl dhparam -outform PEM -out '${splunk_home}/etc/auth/certs/dhparam.pem' ${dhparamsize}\"",
+    command   => "${::system32}\\cmd.exe /c \"openssl dhparam -outform PEM -out '${splunk_home}/etc/auth/certs/dhparam.pem' ${dhparamsize}\"",
     path      => ["${::system32}", "${splunk_home}/bin"],
     creates   => [
       "${splunk_home}/etc/auth/certs/dhparam.pem",
@@ -33,13 +33,13 @@ class splunk::windows::s2s (
     path      => ["${::system32}", "${splunk_home}/bin"],
     creates => [ "${splunk_home}/etc/auth/certs/ca.crt", ],
     require => File["${splunk_home}/etc/auth/certs"],
-    onlyif  => "cmd.exe /c 'if exist ${::confdir}/ssl (exit 0) else (exit 1)'"
+    onlyif  => "${::system32}\\cmd.exe /c 'if exist ${::confdir}/ssl (exit 0) else (exit 1)'"
   } ->
   exec { 'openssl s2s 1 commercial puppet':
     command => "type ${::confdir}/ssl/private_keys/${::fqdn}.pem ${::confdir}/ssl/certs/${::fqdn}.pem > '${splunk_home}/etc/auth/certs/s2s.pem'",
     path      => ["${::system32}", "${splunk_home}/bin"],
     creates => [ "${splunk_home}/etc/auth/certs/s2s.pem", ],
-    onlyif  => "cmd.exe /c 'if exist ${::confdir}/ssl (exit 0) else (exit 1)'"
+    onlyif  => "${::system32}\\cmd.exe /c 'if exist ${::confdir}/ssl (exit 0) else (exit 1)'"
   }
   
   } # if $certtype
