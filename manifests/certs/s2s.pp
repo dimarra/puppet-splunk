@@ -6,12 +6,9 @@ class splunk::certs::s2s (
   $splunk_home = $splunk::splunk_home,
   $certtype = $splunk::certtype
 ){
-          # the following section is added for handling on windows platform
-          if $::osfamily == 'windows' {
-            include splunk::windows::s2s
-#            Class['splunk::windows::s2s']
-          } else {
-          # proceed as per original module
+          # the following section is added for handling on Redhat platform
+          if $::osfamily == 'Redhat' {
+
   if $certtype == 'custom' {
 
   file { "${splunk_home}/etc/auth/certs":
@@ -64,6 +61,6 @@ class splunk::certs::s2s (
   
   } # if $certtype
 
-          } # end if $::osfamily == 'windows'
+          } # end if $::osfamily == 'Redhat'
 }
 

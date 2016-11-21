@@ -75,6 +75,7 @@ class splunk (
   include splunk::inputs
   include splunk::outputs
   include splunk::certs::s2s
+  include splunk::windows::s2s
   include splunk::web
   include splunk::server::general
   include splunk::server::ssl
@@ -95,6 +96,7 @@ class splunk (
   Class['splunk::inputs'] ->
   Class['splunk::outputs'] ->
   Class['splunk::certs::s2s'] ->
+  Class['splunk::windows::s2s'] ->
   Class['splunk::web'] ->
   Class['splunk::server::general'] ->
   Class['splunk::server::ssl'] ->

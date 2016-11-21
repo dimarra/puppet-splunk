@@ -6,6 +6,8 @@ class splunk::windows::s2s (
   $splunk_home = $splunk::splunk_home,
   $certtype = $splunk::certtype
 ){
+          # the following section is added for handling on windows platform
+          if $::osfamily == 'windows' {
 
   $confdir = 'C:/ProgramData/PuppetLabs/puppet/etc'
   if $certtype == 'custom' {
@@ -14,7 +16,7 @@ class splunk::windows::s2s (
     ensure  => directory,
     owner   => $splunk_os_user,
     group   => $splunk_os_user,
-    mode    => '0700',
+    mode    => '0770',
     recurse => true,
   } ->
   exec { 'openssl dhparam':
@@ -43,7 +45,6 @@ class splunk::windows::s2s (
     onlyif  => "${::system32}\\cmd.exe /c 'if exist ${::confdir}/ssl (exit 0) else (exit 1)'"
   }
  */  
-  notify { "first confdir $confdir": }
  
   file { "${splunk_home}/etc/auth/certs/ca.crt": 
     ensure  => 'present',
@@ -71,6 +72,7 @@ class splunk::windows::s2s (
     order   => '02'
   }
   } # if $certtype
+          } # end if $::osfamily == 'windows'
 
 }
 
