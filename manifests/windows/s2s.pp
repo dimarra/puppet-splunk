@@ -42,12 +42,14 @@ class splunk::windows::s2s (
     onlyif  => "${::system32}\\cmd.exe /c 'if exist ${::confdir}/ssl (exit 0) else (exit 1)'"
   }
  */  
+  notify { "first confdir $::confdir": }
+ 
   file { "${splunk_home}/etc/auth/certs/ca.crt": 
     ensure  => 'present',
     replace => 'no',
     owner   => $splunk_os_user,
     group   => $splunk_os_user,
-    source  => "${::confdir}/ssl/certs/ca.pem",
+#    source  => "${::confdir}/ssl/certs/ca.pem",
   }
 
   concat { "${splunk_home}/etc/auth/certs/s2s.pem":
