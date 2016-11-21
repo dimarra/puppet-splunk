@@ -39,6 +39,7 @@ class splunk (
   $dontruncmds  = $splunk::params::dontruncmds,
   $pass4symmkey  = $splunk::params::pass4symmkey,
   $phonehomeintervalinsec = $splunk::params::phonehomeintervalinsec,
+  $clientname_prefix = $splunk::params::clientname_prefix,
   $certtype     = $splunk::params::certtype,
   $replication_port = $splunk::params::replication_port,
   $splunk_app_precedence_dir  = $splunk::params::splunk_app_precedence_dir,

@@ -35,6 +35,7 @@ class splunk::params (
   $useACK      = false
   $ds_intermediate = undef
   $phonehomeintervalinsec = 60
+  $clientname_prefix = undef
   $repositorylocation = 'master-apps'
   $replication_port = 9887
   $version     = undef

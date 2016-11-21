@@ -8,7 +8,8 @@ class splunk::deploymentclient
   $splunk_os_user = $splunk::splunk_os_user,
   $splunk_app_precedence_dir = $splunk::splunk_app_precedence_dir,
   $splunk_app_replace = $splunk::splunk_app_replace,
-  $phonehomeintervalinsec = $splunk::phonehomeintervalinsec
+  $phonehomeintervalinsec = $splunk::phonehomeintervalinsec,
+  $clientname_prefix = $splunk::clientname_prefix,
 ){
   $splunk_app_name = 'puppet_common_deploymentclient_base'
   if $deployment_server == undef {
