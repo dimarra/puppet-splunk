@@ -11,7 +11,7 @@ class splunk::inputs (
   $certtype = $splunk::certtype
 ){
   $splunk_app_name = 'puppet_common_ssl_inputs'
-  if $inputport == undef {
+  if $inputport == 'donotapply' {
     file {"${splunk_home}/etc/apps/${splunk_app_name}":
       ensure  => absent,
       recurse => true,
