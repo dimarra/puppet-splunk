@@ -8,7 +8,7 @@ class splunk::server::kvstore (
   $splunk_os_user = $splunk::splunk_os_user
 ){
   $splunk_app_name = 'puppet_common_kvstore'
-  if $kvstoreport == undef {
+  if $kvstoreport == 'donotapply' {
     file {"${splunk_home}/etc/apps/${splunk_app_name}_base":
       ensure  => absent,
       recurse => true,

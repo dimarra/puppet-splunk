@@ -10,7 +10,7 @@ class splunk::web (
   $splunk_home = $splunk::splunk_home
 ){
   $splunk_app_name = 'puppet_common_ssl_web'
-  if $httpport == undef {
+  if $httpport == 'donotapply' {
     file {"${splunk_home}/etc/apps/${splunk_app_name}_base":
       ensure  => absent,
       recurse => true,
