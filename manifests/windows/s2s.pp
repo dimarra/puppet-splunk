@@ -7,6 +7,7 @@ class splunk::windows::s2s (
   $certtype = $splunk::certtype
 ){
 
+  $confdir = 'C:/ProgramData/PuppetLabs/puppet/etc'
   if $certtype == 'custom' {
 
   file { "${splunk_home}/etc/auth/certs":
@@ -42,14 +43,14 @@ class splunk::windows::s2s (
     onlyif  => "${::system32}\\cmd.exe /c 'if exist ${::confdir}/ssl (exit 0) else (exit 1)'"
   }
  */  
-  notify { "first confdir $::confdir": }
+  notify { "first confdir $confdir": }
  
   file { "${splunk_home}/etc/auth/certs/ca.crt": 
     ensure  => 'present',
     replace => 'no',
     owner   => $splunk_os_user,
     group   => $splunk_os_user,
-#    source  => "${::confdir}/ssl/certs/ca.pem",
+    source  => "${confdir}/ssl/certs/ca.pem",
   }
 
   concat { "${splunk_home}/etc/auth/certs/s2s.pem":
@@ -58,15 +59,15 @@ class splunk::windows::s2s (
     mode    => '0644'
   }
 
-  concat::fragment{ "${::confdir}/ssl/private_keys/${::fqdn}.pem":
+  concat::fragment{ "${confdir}/ssl/private_keys/${::fqdn}.pem":
     target  => "${splunk_home}/etc/auth/certs/s2s.pem",
-    source  => "${::confdir}/ssl/private_keys/${::fqdn}.pem",
+    source  => "${confdir}/ssl/private_keys/${::fqdn}.pem",
     order   => '01'
   }
 
-  concat::fragment{ "${::confdir}/ssl/certs/${::fqdn}.pem":
+  concat::fragment{ "${confdir}/ssl/certs/${::fqdn}.pem":
     target  => "${splunk_home}/etc/auth/certs/s2s.pem",
-    source  => "${::confdir}/ssl/certs/${::fqdn}.pem",
+    source  => "${confdir}/ssl/certs/${::fqdn}.pem",
     order   => '02'
   }
   } # if $certtype
