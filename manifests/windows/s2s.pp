@@ -4,7 +4,8 @@ class splunk::windows::s2s (
   $package = $splunk::package,
   $splunk_os_user = $splunk::splunk_os_user,
   $splunk_home = $splunk::splunk_home,
-  $certtype = $splunk::certtype
+  $certtype = $splunk::certtype,
+  $splunk_permissions = $splunk::splunk_permissions,
 ){
           # the following section is added for handling on windows platform
           if $::osfamily == 'windows' {
@@ -16,7 +17,7 @@ class splunk::windows::s2s (
     ensure  => directory,
     owner   => $splunk_os_user,
     group   => $splunk_os_user,
-    mode    => '0770',
+    mode    => $splunk_permissions',
     recurse => true,
   } ->
   exec { 'openssl dhparam':
@@ -57,7 +58,7 @@ class splunk::windows::s2s (
   concat { "${splunk_home}/etc/auth/certs/s2s.pem":
     owner   => $splunk_os_user,
     group   => $splunk_os_user,
-    mode    => '0644'
+    mode    => $splunk_permissions
   }
 
   concat::fragment{ "${confdir}/ssl/private_keys/${::fqdn}.pem":
