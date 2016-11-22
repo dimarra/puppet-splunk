@@ -67,7 +67,7 @@ class splunk::authentication
         ensure  => present,
         owner   => $splunk_os_user,
         group   => $splunk_os_user,
-        mode    => $splunk_permissions,
+        mode    => '0660', # to prevent puppet from always setting the mode in windows
         replace => $splunk_app_replace,
         content => template("splunk/${splunk_app_name}_saml_base/local/authentication.conf"),
       }
@@ -93,7 +93,7 @@ class splunk::authentication
         ensure  => present,
         owner   => $splunk_os_user,
         group   => $splunk_os_user,
-        mode    => '0600',
+        mode    => '0660', # to prevent puppet from always setting the mode in windows
         replace => $splunk_app_replace,
         content => template("splunk/${splunk_app_name}_ldap_base/local/authentication.conf"),
       }
