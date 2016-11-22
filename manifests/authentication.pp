@@ -67,7 +67,7 @@ class splunk::authentication
         ensure  => present,
         owner   => $splunk_os_user,
         group   => $splunk_os_user,
-        mode    => '0600',
+        mode    => $splunk_permissions,
         replace => $splunk_app_replace,
         content => template("splunk/${splunk_app_name}_saml_base/local/authentication.conf"),
       }
