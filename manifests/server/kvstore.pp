@@ -5,7 +5,8 @@ class splunk::server::kvstore (
   $splunk_home = $splunk::splunk_home,
   $splunk_app_precedence_dir = $splunk::splunk_app_precedence_dir,
   $splunk_app_replace = $splunk::splunk_app_replace,
-  $splunk_os_user = $splunk::splunk_os_user
+  $splunk_os_user = $splunk::splunk_os_user,
+  $splunk_permissions = $splunk::splunk_permissions,
 ){
   $splunk_app_name = 'puppet_common_kvstore'
   if $kvstoreport == 'donotapply' {

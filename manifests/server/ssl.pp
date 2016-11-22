@@ -8,7 +8,8 @@ class splunk::server::ssl (
   $splunk_app_precedence_dir = $splunk::splunk_app_precedence_dir,
   $splunk_app_replace = $splunk::splunk_app_replace,
   $splunk_home = $splunk::splunk_home,
-  $certtype = $splunk::certtype
+  $certtype = $splunk::certtype,
+  $splunk_permissions = $splunk::splunk_permissions,
 ){
   $splunk_app_name = 'puppet_common_ssl_base'
   file { ["${splunk_home}/etc/apps/${splunk_app_name}",

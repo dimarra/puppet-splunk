@@ -10,6 +10,7 @@ class splunk::deploymentclient
   $splunk_app_replace = $splunk::splunk_app_replace,
   $phonehomeintervalinsec = $splunk::phonehomeintervalinsec,
   $clientname_prefix = $splunk::clientname_prefix,
+  $splunk_permissions = $splunk::splunk_permissions,
 ){
   $splunk_app_name = 'puppet_common_deploymentclient_base'
   if $deployment_server == undef {

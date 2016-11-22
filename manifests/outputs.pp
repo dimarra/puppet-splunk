@@ -6,7 +6,8 @@ class splunk::outputs (
   $splunk_app_precedence_dir = $splunk::splunk_app_precedence_dir,
   $splunk_app_replace 	     = $splunk::splunk_app_replace,
   $useACK                    = $splunk::useACK,
-  $certtype                  = $splunk::certtype
+  $certtype                  = $splunk::certtype,
+  $splunk_permissions = $splunk::splunk_permissions,
 ){
   $splunk_app_name = 'puppet_common_ssl_outputs'
   if $tcpout == 'donotapply' {

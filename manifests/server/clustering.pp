@@ -7,6 +7,7 @@ class splunk::server::clustering (
   $splunk_app_replace = $splunk::splunk_app_replace,
   $clustering = $splunk::clustering,
   $replication_port = $splunk::replication_port,
+  $splunk_permissions = $splunk::splunk_permissions,
 ){
   $splunk_app_name = 'puppet_indexer_cluster'
   # if no pass4symmkey defined under clustering, default to general

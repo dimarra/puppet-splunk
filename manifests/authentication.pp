@@ -6,7 +6,8 @@ class splunk::authentication
   $auth = $splunk::auth,
   $splunk_app_precedence_dir = $splunk::splunk_app_precedence_dir,
   $splunk_app_replace = $splunk::splunk_app_replace,
-  $rolemap = $splunk::rolemap
+  $rolemap = $splunk::rolemap,
+  $splunk_permissions = $splunk::splunk_permissions,
 ){
   $splunk_app_name = 'puppet_common_auth'
   case $auth['authtype'] {

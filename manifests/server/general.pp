@@ -4,7 +4,8 @@ class splunk::server::general (
   $splunk_os_user = $splunk::splunk_os_user,
   $splunk_app_precedence_dir = $splunk::splunk_app_precedence_dir,
   $splunk_app_replace = $splunk::splunk_app_replace,
-  $splunk_home = $splunk::splunk_home
+  $splunk_home = $splunk::splunk_home,
+  $splunk_permissions = $splunk::splunk_permissions,
 ){
           # the following section is added for handling on windows platform
           if $::osfamily == 'windows' {

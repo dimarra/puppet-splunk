@@ -4,7 +4,8 @@ class splunk::certs::s2s (
   $package = $splunk::package,
   $splunk_os_user = $splunk::splunk_os_user,
   $splunk_home = $splunk::splunk_home,
-  $certtype = $splunk::certtype
+  $certtype = $splunk::certtype,
+  $splunk_permissions = $splunk::splunk_permissions,
 ){
           # the following section is added for handling on Redhat platform
           if $::osfamily == 'Redhat' {
