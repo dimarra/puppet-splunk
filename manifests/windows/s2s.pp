@@ -58,7 +58,7 @@ class splunk::windows::s2s (
   concat { "${splunk_home}/etc/auth/certs/s2s.pem":
     owner   => $splunk_os_user,
     group   => $splunk_os_user,
-    mode    => $splunk_permissions
+    mode    => '0660'
   }
 
   concat::fragment{ "${confdir}/ssl/private_keys/${::fqdn}.pem":
