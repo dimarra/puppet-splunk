@@ -60,7 +60,7 @@ class splunk::authentication
         ensure => directory,
         owner  => $splunk_os_user,
         group  => $splunk_os_user,
-        mode   => '0700',
+        mode   => $splunk_permissions,
       } ->
       file { "${splunk_home}/etc/apps/${splunk_app_name}_saml_base/${splunk_app_precedence_dir}/authentication.conf":
         ensure  => present,
@@ -86,7 +86,7 @@ class splunk::authentication
         ensure => directory,
         owner  => $splunk_os_user,
         group  => $splunk_os_user,
-        mode   => '0700',
+        mode   => $splunk_permissions,
       } ->
       file { "${splunk_home}/etc/apps/${splunk_app_name}_ldap_base/${splunk_app_precedence_dir}/authentication.conf":
         ensure  => present,

@@ -21,7 +21,7 @@ class splunk::server::kvstore (
       ensure => directory,
       owner  => $splunk_os_user,
       group  => $splunk_os_user,
-      mode   => '0700',
+      mode   => $splunk_permissions,
     } ->
     file { "${splunk_home}/etc/apps/${splunk_app_name}_disabled/${splunk_app_precedence_dir}/server.conf":
       ensure  => present,
@@ -44,7 +44,7 @@ class splunk::server::kvstore (
       ensure => directory,
       owner  => $splunk_os_user,
       group  => $splunk_os_user,
-      mode   => '0700',
+      mode   => $splunk_permissions,
     } ->
     file { "${splunk_home}/etc/apps/${splunk_app_name}_base/${splunk_app_precedence_dir}/server.conf":
       ensure  => present,

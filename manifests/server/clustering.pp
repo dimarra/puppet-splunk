@@ -39,7 +39,7 @@ class splunk::server::clustering (
         ensure => directory,
         owner  => $splunk_os_user,
         group  => $splunk_os_user,
-        mode   => '0700',
+        mode   => $splunk_permissions,
       } ->
       file { "${splunk_home}/etc/apps/${splunk_app_name}_pass4symmkey_base/${splunk_app_precedence_dir}/server.conf":
         ensure  => present,
@@ -77,7 +77,7 @@ class splunk::server::clustering (
         ensure => directory,
         owner  => $splunk_os_user,
         group  => $splunk_os_user,
-        mode   => '0700',
+        mode   => $splunk_permissions,
       } ->
       file { "${splunk_home}/etc/apps/${splunk_app_name}_pass4symmkey_base/${splunk_app_precedence_dir}/server.conf":
         ensure  => present,
@@ -115,7 +115,7 @@ class splunk::server::clustering (
         ensure => directory,
         owner  => $splunk_os_user,
         group  => $splunk_os_user,
-        mode   => '0700',
+        mode   => $splunk_permissions,
       } ->
       file { "${splunk_home}/etc/apps/${splunk_app_name}_pass4symmkey_base/${splunk_app_precedence_dir}/server.conf":
         ensure  => present,

@@ -1,5 +1,5 @@
 # vim: ts=2 sw=2 et
-class splunk::inputs (
+class splunk::absent (
   $inputport = $splunk::inputport,
   $ciphersuite = $splunk::ciphersuite,
   $sslversions = $splunk::sslversions,
@@ -26,7 +26,7 @@ class splunk::inputs (
       ensure => directory,
       owner  => $splunk_os_user,
       group  => $splunk_os_user,
-      mode   => '0700',
+      mode   => $splunk_permissions,
     } ->
     file { "${splunk_home}/etc/apps/${splunk_app_name}/${splunk_app_precedence_dir}/inputs.conf":
       ensure  => present,

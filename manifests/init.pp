@@ -43,7 +43,8 @@ class splunk (
   $certtype     = $splunk::params::certtype,
   $replication_port = $splunk::params::replication_port,
   $splunk_app_precedence_dir  = $splunk::params::splunk_app_precedence_dir,
-  $splunk_app_replace  = $splunk::params::splunk_app_replace
+  $splunk_app_replace  = $splunk::params::splunk_app_replace,
+  $splunk_permissions  = $splunk::params::splunk_permissions,
   ) inherits splunk::params {
 
   if $type == 'uf' {

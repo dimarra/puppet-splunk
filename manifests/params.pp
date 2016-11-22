@@ -79,6 +79,7 @@ class splunk::params (
 
 #        $default_user = 'Administrator'
         $splunk_os_user = 'Administrators'
+        $splunk_permissions = '0770'
     }
     default: {
         $server_home = '/opt/splunk'
@@ -89,6 +90,7 @@ class splunk::params (
 
 #        $default_user = 'Administrator'
         $splunk_os_user = 'splunk'
+        $splunk_permissions = '0700'
     }
   }  
 }

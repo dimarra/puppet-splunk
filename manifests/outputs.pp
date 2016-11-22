@@ -23,7 +23,7 @@ class splunk::outputs (
       ensure => directory,
       owner  => $splunk_os_user,
       group  => $splunk_os_user,
-      mode   => '0700',
+      mode   => $splunk_permissions,
     } ->
     file { "${splunk_home}/etc/apps/${splunk_app_name}/${splunk_app_precedence_dir}/outputs.conf":
       ensure  => present,
