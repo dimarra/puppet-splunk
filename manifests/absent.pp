@@ -11,24 +11,12 @@ class splunk::absent (
   $certtype = $splunk::certtype
 ){
   
-  service { 'splunkforwarder':
-    ensure => 'stopped',
-    enable => false,
-  }
+#  service { ['splunkforwarder', 'splunk']:
+#    ensure => 'stopped',
+#    enable => false,
+#  }
 
-  package { 'splunkforwarder':
-    ensure   => 'absent',
-#    provider => chocolatey,
-#    source   => '"http://ip-172-31-25-24.ap-southeast-2.compute.internal/chocolatey"',
-#    install_options => '--allow-empty-checksums',
-  }
-
-  service { 'splunk':
-    ensure => 'stopped',
-    enable => false,
-  }
-
-  package { 'splunk':
+  package { ['splunkforwarder', 'splunk']:
     ensure   => 'absent',
 #    provider => chocolatey,
 #    source   => '"http://ip-172-31-25-24.ap-southeast-2.compute.internal/chocolatey"',
