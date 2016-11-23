@@ -22,7 +22,9 @@ class splunk::profile::universalforwarder {
 
   class { 'splunk' :
     type => 'uf',
-    tcpout => lookup("splunk::heavyforwarders")
+    tcpout => lookup("splunk::heavyforwarders"),
+    license_master => 'donotapply',
+    searchpeers => 'donotapply',
   }
 
 }

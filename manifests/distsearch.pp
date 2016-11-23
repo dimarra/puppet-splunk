@@ -10,9 +10,12 @@ class splunk::distsearch (
 ){
   notify { "distsearch $searchpeers": }
   $splunk_app_name = 'puppet_search_shcluster_distsearch_base'
-  if $searchpeers == undef {
-    file { "${splunk_home}/etc/system/local/distsearch.conf":
-      ensure  => 'absent',
+  if $searchpeers == 'donotapply' {
+    file {"${splunk_home}/etc/apps/${splunk_app_name}":
+      ensure  => absent,
+      recurse => true,
+      purge   => true,
+      force   => true,
     }
   } else {
     # do nothing, because we use $SPLUNK_HOME/bin/splunk add search-server
