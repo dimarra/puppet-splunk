@@ -20,12 +20,10 @@
 
 class splunk::profile::deployer {
 
-  include splunk
-
-#  class { 'splunk' :
-#    clustering => { 
-#      master   => undef,
-#    }
-#  }
+  class { 'splunk' :
+    shclustering => lookup("splunk::shclustering", Hash[String, Scalar], "hash", {}),
+    license_master => 'donotapply',
+    searchpeers => 'donotapply',
+  }
 
 }
