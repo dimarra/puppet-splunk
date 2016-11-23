@@ -9,7 +9,7 @@ class splunk::distsearch (
   $splunk_permissions = $splunk::splunk_permissions,
 ){
   notify { "distsearch $searchpeers": }
-  $splunk_app_name = 'puppet_common_search_shcluster_distsearch_base'
+  $splunk_app_name = 'puppet_search_shcluster_distsearch_base'
   if $searchpeers == undef {
     file { "${splunk_home}/etc/system/local/distsearch.conf":
       ensure  => 'absent',
