@@ -92,6 +92,8 @@ class splunk (
   include splunk::authentication
   include splunk::service
 
+  notify { "searchpeers $searchpeers": }
+
   # make sure classes are properly ordered and contained
   anchor { 'splunk_first': } ->
   Class['splunk::installed'] ->
