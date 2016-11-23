@@ -22,7 +22,7 @@ class splunk::profile::universalforwarder {
 
   class { 'splunk' :
     type => 'uf',
-    tcpout => lookup("splunk::heavyforwarders", Hash[String, Scalar], "hash", undef)
+    tcpout => lookup("splunk::heavyforwarders")
   }
 
 }
