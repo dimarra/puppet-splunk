@@ -22,7 +22,7 @@ class splunk::profile::searchhead {
 
   class { 'splunk' :
     shclustering => lookup("splunk::shclustering", Hash[String, Scalar], "hash", {}),
-#    tcpout => lookup("splunk::indexers"),
+    license_master => 'donotapply',
     searchpeers => lookup("splunk::searchpeers"),
   }
 
