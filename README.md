@@ -108,7 +108,7 @@ node 'splunk-server.internal.corp.tld' {
 
 ### Example 2: 
 
-Extends the example above with a node that will run the Splunk universal forwarder. It uses the first server as Deployment Server (`ds =>`) where apps, inputs and outputs can be managed and deployed through Forwarder Management.
+Extends the example above with a node that will run the Splunk universal forwarder. It uses the first server as Deployment Server (`deployment_server =>`) where apps, inputs and outputs can be managed and deployed through Forwarder Management.
 
 ![Example 2](example2.png)
 
