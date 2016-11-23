@@ -8,7 +8,6 @@ class splunk::distsearch (
   $splunk_app_precedence_dir = $splunk::splunk_app_precedence_dir,
   $splunk_permissions = $splunk::splunk_permissions,
 ){
-  notify { "distsearch $searchpeers": }
   $splunk_app_name = 'puppet_search_shcluster_distsearch_base'
   if $searchpeers == 'donotapply' {
     file {"${splunk_home}/etc/apps/${splunk_app_name}":
