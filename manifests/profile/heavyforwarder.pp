@@ -22,7 +22,6 @@ class splunk::profile::heavyforwarder {
 
   class { 'splunk' :
 #    clustering => lookup("splunk::shclustering", Hash[String, Scalar], "hash", {}),
-    tcpout => lookup("splunk::searchpeers"),
   }
   
 }

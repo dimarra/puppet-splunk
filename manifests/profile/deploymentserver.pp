@@ -21,7 +21,7 @@
 class splunk::profile::deploymentserver {
 
   class { 'splunk' :
-    tcpout => lookup("splunk::searchpeers"),
+#    tcpout => lookup("splunk::indexers"),
   }
 
 }
