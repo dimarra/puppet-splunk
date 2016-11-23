@@ -22,6 +22,7 @@ class splunk::profile::searchhead {
 
   class { 'splunk' :
     clustering => lookup("splunk::shclustering", Hash[String, Scalar], "hash", undef),
+    tcpout => lookup("splunk::searchpeers", Hash[String, Scalar], "hash", undef)
   }
 
 }
