@@ -22,6 +22,8 @@ class splunk::profile::heavyforwarder {
 
   class { 'splunk' :
 #    clustering => lookup("splunk::shclustering", Hash[String, Scalar], "hash", {}),
+    license_master => 'donotapply',
+    searchpeers => 'donotapply',
   }
   
 }
