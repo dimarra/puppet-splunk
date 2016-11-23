@@ -3,11 +3,8 @@
 class splunk::distsearch (
   $searchpeers = $splunk::searchpeers,
   $splunk_os_user = $splunk::splunk_os_user,
-  $splunk_home = $splunk::splunk_home,
   $splunk_app_replace        = $splunk::splunk_app_replace,
   $splunk_app_precedence_dir = $splunk::splunk_app_precedence_dir,
-  $useACK                    = $splunk::useACK,
-  $certtype                  = $splunk::certtype,
   $splunk_permissions = $splunk::splunk_permissions,
 ){
   notify { "distsearch $searchpeers": }
