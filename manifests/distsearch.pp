@@ -24,12 +24,12 @@ class splunk::distsearch (
       group  => $splunk_os_user,
       mode   => $splunk_permissions,
     } ->
-    file { "${splunk_home}/etc/apps/${splunk_app_name}/${splunk_app_precedence_dir}/outputs.conf":
+    file { "${splunk_home}/etc/apps/${splunk_app_name}/${splunk_app_precedence_dir}/distsearch.conf":
       ensure  => present,
       owner   => $splunk_os_user,
       group   => $splunk_os_user,
       replace => $splunk_app_replace,
-      content => template("splunk/${splunk_app_name}/local/outputs.conf"),
+      content => template("splunk/${splunk_app_name}/local/distsearch.conf"),
     }
   }
 }
