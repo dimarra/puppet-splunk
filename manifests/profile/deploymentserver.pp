@@ -20,12 +20,8 @@
 
 class splunk::profile::deploymentserver {
 
-  include splunk
-
-#  class { 'splunk' :
-#    clustering => { 
-#      master   => undef,
-#    }
-#  }
+  class { 'splunk' :
+    tcpout => lookup("splunk::searchpeers"),
+  }
 
 }
