@@ -6,6 +6,7 @@ class splunk::server::shclustering (
   $shclustering = $splunk::shclustering,
   $splunk_app_replace = false,
   $splunk_app_precedence_dir = 'default',
+  $replication_port = $splunk::replication_port,
   $splunk_permissions = $splunk::splunk_permissions,
 ){
   $splunk_app_name = 'puppet_search_shcluster'
