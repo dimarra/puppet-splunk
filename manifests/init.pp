@@ -54,7 +54,6 @@ class splunk (
     $splunk_home = $splunk::params::server_home
     $package = $splunk::params::server_package
   }
-notify { "splunk_home=$splunk_home": }
 
    case $sslcompatibility {
     'modern':            {

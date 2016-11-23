@@ -12,9 +12,6 @@ class splunk::inputs (
   $splunk_permissions = $splunk::splunk_permissions,
 ){
   $splunk_app_name = 'puppet_common_ssl_inputs'
-  notify { "2splunk_home=$splunk_home": }
-
-
   if $inputport == 'donotapply' {
     file {"${splunk_home}/etc/apps/${splunk_app_name}":
       ensure  => absent,
