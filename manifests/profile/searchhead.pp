@@ -20,9 +20,21 @@
 
 class splunk::profile::searchhead {
 
-  class { 'splunk' :
-    clustering => lookup("splunk::shclustering", Hash[String, Scalar], "hash", {}),
-    tcpout => lookup("splunk::searchpeers", Array)
-  }
+  $searchpeers = lookup("splunk::searchpeers")
+  notify { "searchpeers $searchpeers": }
 
+  $searchheads = lookup("splunk::searchheads")
+  notify { "searchheads $searchheads": }
+
+
+  $heavyforwarders = lookup("splunk::heavyforwarders")
+  notify { "heavyforwarders $heavyforwarders": }
+
+
+#
+#  class { 'splunk' :
+#    clustering => lookup("splunk::shclustering", Hash[String, Scalar], "hash", {}),
+#    tcpout => lookup("splunk::searchpeers", Array)
+#  }
+#
 }
