@@ -9,6 +9,7 @@ class splunk::outputs (
   $certtype                  = $splunk::certtype,
   $splunk_permissions = $splunk::splunk_permissions,
 ){
+  notify { "tcpout $tcpout": }
   $splunk_app_name = 'puppet_common_ssl_outputs'
   if $tcpout == 'donotapply' {
     file {"${splunk_home}/etc/apps/${splunk_app_name}":

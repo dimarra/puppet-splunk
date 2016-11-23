@@ -31,10 +31,10 @@ class splunk::profile::searchhead {
   notify { "heavyforwarders $heavyforwarders": }
 
 
-#
-#  class { 'splunk' :
-#    clustering => lookup("splunk::shclustering", Hash[String, Scalar], "hash", {}),
-#    tcpout => lookup("splunk::searchpeers", Array)
-#  }
-#
+
+  class { 'splunk' :
+    clustering => lookup("splunk::shclustering", Hash[String, Scalar], "hash", {}),
+    tcpout => $searchpeers,
+  }
+
 }
