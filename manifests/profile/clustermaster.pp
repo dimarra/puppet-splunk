@@ -22,6 +22,7 @@ class splunk::profile::clustermaster {
 
   # do a lookup hash strategy to merge the values from other yaml files.
   class { 'splunk' :
-    clustering => lookup("splunk::clustering", Hash[String, Scalar], "hash", undef)
+    clustering => lookup("splunk::clustering", Hash[String, Scalar], "hash", undef),
+    inputport => 'donotapply',
   }
 }
