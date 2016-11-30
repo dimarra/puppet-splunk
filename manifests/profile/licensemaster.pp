@@ -23,6 +23,8 @@ class splunk::profile::licensemaster {
   # license master should not be pointing to another master.  pls confirm?
   class { 'splunk' :
     license_master => 'donotapply',
+    inputport => 'donotapply',
+    searchpeers => 'donotapply',
   }
 
 }
